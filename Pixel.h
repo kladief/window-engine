@@ -2,6 +2,7 @@
 #define PIXEL_H
 #include <windows.h>
 #include <functional>
+#include <iostream>
 #include <wingdi.h>
 class Pixel{
 private:
@@ -37,7 +38,6 @@ public:
     Pixel();
     ~Pixel();
     bool process();
-    char processKeyboard();
     void setPixel(COORD,Color);
     void setMatrix(char*);
     char* getMatrix();

@@ -52,33 +52,6 @@ bool Pixel::process(){
         msg.message=0;
     return true;
 }
-char Pixel::processKeyboard(){
-    char out=0;
-    if(PeekMessageA(&msg,NULL,0,0,PM_REMOVE)){
-        if(msg.message==WM_QUIT){
-            return false;
-        }
-        if(msg.message==WM_CHAR){
-            switch(msg.wParam){
-                case 'a':
-                    out='a';
-                    break;
-                case 's':
-                    out='s';
-                    break;
-                case 'd':
-                    out='d';
-                    break;
-                case 'w':
-                    out='w';
-                    break;
-            }
-        }
-        TranslateMessage(&msg); // функция расшифровывает системное сообщение
-        DispatchMessage(&msg);  // функция  передаёт сообщение в оконную процедуру на обработку    
-    }
-    return out;
-}
 void Pixel::setPixel(COORD coord,Color color){
     pixels[coord.X*4 + coord.Y*windowRect.right*4]=color.blue;
     pixels[coord.X*4 + coord.Y*windowRect.right*4 + 1]=color.green;
